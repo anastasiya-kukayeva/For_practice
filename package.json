@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test_ui": "npx playwright test --ui"
+    "test_ui": "npx playwright test --ui",
+    "lint": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
