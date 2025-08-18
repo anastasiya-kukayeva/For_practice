@@ -16,12 +16,10 @@ test("successful_test", async ({ page }) => {
   const passwordField = page.getByRole("textbox", { name: "Пароль" })
   await passwordField.click()
   await passwordField.fill("sup321")
-  // await passwordField.press("Enter")
   const button = page.getByRole("button", { name: "Войти" })
   await button.click()
   await expect(page).toHaveURL(`${URL}`)
   await expect(page.getByRole("heading", { name: "Загрузка справочников" })).toBeVisible()
-  // await page.waitForTimeout(10000)
   await expect(page).toHaveURL(`${URL}/schedule/daily/${getCurrentStringDate()}`, {
     timeout: 300_000,
   })
