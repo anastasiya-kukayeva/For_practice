@@ -25,7 +25,4 @@ test("successful_test", async ({ page }) => {
   await expect(page).toHaveURL(`${URL}/schedule/daily/${getCurrentStringDate()}`, {
     timeout: 300_000,
   })
-  // await expect(page).toHaveURL(URL)
-  // const dropDown = page.getByRole("listbox")
-  // await expect(dropDown).toBeVisible()
 })
