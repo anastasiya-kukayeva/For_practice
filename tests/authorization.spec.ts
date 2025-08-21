@@ -1,5 +1,3 @@
-// Валидный тест с валидными кредами
-
 import { test, expect } from "@playwright/test"
 import { getCurrentStringDate } from "../utils/getCurrentStringDate"
 
@@ -18,12 +16,12 @@ test("successful_test", async ({ page }) => {
   await test.step("Проверить заголовок", async () => {
     await expect(page.locator('//h2[@class="_title_1ptgq_1"]')).toBeVisible()
   })
-  await test.step("Проверить имя пользователя", async () => {
+  await test.step("Ввести имя пользователя", async () => {
     const loginField = page.locator('//input[@type="text"]')
     await loginField.click()
     await loginField.fill(username)
   })
-  await test.step("Проверить пароль", async () => {
+  await test.step("Ввести пароль", async () => {
     const passwordField = page.locator('//input[@type="password"]')
     await passwordField.click()
     await passwordField.fill(password)
@@ -35,10 +33,10 @@ test("successful_test", async ({ page }) => {
   await test.step("Проверить адрес страницы", async () => {
     await expect(page).toHaveURL(`${URL}`)
   })
-  await test.step("Проверить заголовок на следующе странице", async () => {
+  await test.step("Проверить заголовок на следующей странице", async () => {
     await expect(page.locator('//*[contains(text(), "Загрузка справочников")]')).toBeVisible()
   })
-  await test.step("Проверить адрес сстраницы", async () => {
+  await test.step("Проверить адрес страницы", async () => {
     await expect(page).toHaveURL(`${URL}/schedule/daily/${getCurrentStringDate()}`, {
       timeout: 300_000,
     })
