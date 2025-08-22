@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test"
 
 test("unsuccessful_test: invalid password", async ({ page }) => {
-  const username = process.env.LOGIN // your_username
-  const password = "Invalid password" // your_strong_password
-  const URL = process.env.BASE_URL // your_strong_url
+  const username = process.env.LOGIN
+  const password = "Invalid password"
+  const URL = process.env.BASE_URL
 
   await test.step("Открыть страницу", async () => {
     await page.goto(URL)
@@ -14,15 +14,18 @@ test("unsuccessful_test: invalid password", async ({ page }) => {
     await loginField.click()
     await loginField.fill(username)
   })
+
   await test.step("Ввести некорректный пароль", async () => {
     const passwordField = page.locator('//input[@type="password"]')
     await passwordField.click()
     await passwordField.fill(password)
   })
-  await test.step('Клик по кнопке "Войти"', async () => {
+
+  await test.step("Клик по кнопке 'Войти'", async () => {
     const button = page.locator('//button[@type="submit"]')
     await button.click()
   })
+
   await test.step("Проверить наличие валидационного сообщения", async () => {
     await expect(page.locator('//*[contains(text(), "Неверный логин и/или пароль")]')).toBeVisible()
   })
